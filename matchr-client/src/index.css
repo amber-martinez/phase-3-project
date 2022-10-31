@@ -1,0 +1,353 @@
+body {
+  text-align: center;
+  font-family: Avenir Next;
+}
+
+#chatBoxOutline {
+  border: 2px solid #1c1c59;
+  display: inline-block;
+  position: relative;
+  margin-top: 20px;
+  height: 700px;
+  width: 1300px;
+  overflow-y: scroll;
+  /* padding: 300px 650px 400px 650px; */
+}
+
+#chatBubblesWrapper {
+  max-height: 480px;
+  overflow-y: scroll;
+}
+
+#chatSendButton {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+#chatTypeBoxWrapper {
+  position: absolute;
+  bottom: 42px;
+  left: 11%;
+}
+
+#chatTypeBox {
+  height: 50px;
+  width: 875px;
+  border-radius: 27px;
+  border-color: #1c1c59;
+  font-size: 18px;
+  padding-left: 18px;
+  font-family: Avenir Next;
+}
+
+#chatTitle {
+  margin-top: 40px;
+  font-family: Avenir Next;
+  font-size: 22px;
+}
+
+#chatSendWrapper {
+  position: absolute;
+  display: inline-block;
+  position: absolute;
+  bottom: 15px;
+  right: 11%;
+}
+
+#chatArrow {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+#chatIcon {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+#chatIconGroup {
+  display: inline-block;
+  padding: 15px;
+}
+
+/* #chatMessageBar {
+  bottom: -515px;
+  text-align: center;
+  position: relative;
+} */
+
+#editProfileBox {
+  margin: 0;
+}
+
+#editProfileButton {
+  background-color: #8198d2;
+  padding: 8px 15px 8px 15px;
+  color: white;
+  font-size: 15px;
+  font-family: Avenir Next;
+  border-color: transparent;
+  border-radius: 30px;
+}
+
+#headerImg {
+  margin: auto;
+  height: 125px;
+}
+
+/* left */
+#leftWrapper {
+  max-height: 485px;
+  flex-direction: column-reverse;
+  padding: 10px 10px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#leftContainer {
+  margin: 27px 150px;
+  display: inline-flex;
+}
+#leftPhotoCropper {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+#leftIcon {
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+}
+#leftBubble {
+/* text */
+  font-family: Gill Sans;
+  font-size: 22px;
+/* bubbles */
+  position: relative;
+  min-width: 60px;
+  max-width: 700px;
+  margin: 4px 8px;
+  padding: 14px 18px;
+  background-color: #fff8d1;
+  border-radius: 16px 16px 16px 0;
+  border: 1px solid #fff8d1;
+}
+
+#signUpHeader {
+  font-size: 22px;
+  padding-bottom: 13px;
+}
+
+#newSignUp {
+  z-index: 90;
+  background-color: #dee4f4;
+  height: 700px;
+  width: 800px;
+  margin: auto;
+  color: #1c1c59;
+  padding: 30px;
+}
+
+/* #signUpForm {
+  text-align: left;
+} */
+
+#signUpLabels {
+  display: flex;
+  justify-content: left;
+  padding-left: 250px;
+  font-size: 20px;
+  color: #1c1c59;
+}
+
+#signUpInterestsContainer {
+  text-align: left;
+}
+
+
+#signUpSubmit {
+  margin: 0;
+  background-color: #adb5c9;
+  color: #1c1c59;
+  padding: 18px;
+  border-radius: 30px;
+  border-color: #9097a8;
+  border-style: solid;
+  font-family: Avenir Next;
+  font-size: 17px;
+}
+
+#filterGroup {
+  display: flex;
+  justify-content: center;
+}
+
+#filterBtn {
+  margin-right: 12px;
+  color: #1c1c59;
+  background-color: transparent;
+  border-color: transparent;
+  font-size: 15px;
+}
+
+#filterItem {
+  padding: 10px 40px 10px 28px;
+  background-color: #8198d2;
+  margin: 15px 20px 30px 25px;
+  color: white;
+  font-size: 15px;
+  border-radius: 30px;
+  /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+}
+
+#interestsFilterItem {
+  padding: 10px 40px 10px 28px;
+  background-color: #8198d2;
+  margin: 15px 20px 30px 25px;
+  color: white;
+  font-size: 15px;
+  border-radius: 30px;
+  z-index: 10;
+  /* box-shadow: 0 1px 2px 0 rgba(17, 14, 59, 0.2); */
+}
+
+#interestButton {
+  margin: 3px;
+  background-color: #9bb2ec;
+  border-radius: 30px;
+  color: white;
+  font-size: 14px;
+  border-color: transparent;
+  font-family: Avenir Next;
+}
+
+.NavBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #a7c0ff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  width: 100vw;
+  border-top: 1px solid #93a6d6;
+}
+
+#navIcon {
+  /* display: flex;
+  flex-direction: row; */
+  /* margin: auto; */
+  max-height: 85px;
+  /* add percentages instead V */
+  padding-right: 10vw;
+  padding-left: 10vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+/* #navSpan { */
+  /* display: flex;
+  flex-direction: row; */
+  /* margin: auto; */
+  /* border: 3px solid black; */
+/* } */
+
+#peopleCards {
+  padding-bottom: 250px;
+}
+
+.personCard {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: inline-block;
+  padding: 20px 40px 100px 40px;
+  margin: 15px;
+  height: 370px;
+  width: 250px;
+  background-color: #dee4f4;
+  border-radius: 10px;
+}
+
+#personIcon {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  border: 3px solid #8198d2;
+  border-radius: 10px;
+}
+
+#personHeader {
+  margin: 10px 0px -10px 0px;
+  font-size: 28px;
+}
+
+#personInterests {
+  margin: -10px 0px 25px 0px;
+}
+
+#heart {
+  height: 50px;
+}
+
+#box {
+  display: inline-block;
+}
+
+#arrow {
+  display: inline-block;
+  height: 60px;
+  width: auto;
+}
+
+/* right */
+#rightBubblesWrapper {
+  flex-direction: column-reverse;
+  position: bottom;
+  padding: 10px 10px;
+  align-items: end;
+  display: flex;
+  justify-content: flex-end;
+}
+#rightContainer {
+  margin: 6px 170px;
+  display: inline-flex;
+}
+#rightPhotoCropper {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+#rightIcon {
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+}
+#rightBubble {
+/* text */
+  font-family: Gill Sans;
+  font-size: 22px;
+/* bubbles */
+  position: relative;
+  min-width: 60px;
+  max-width: 700px;
+  margin: 4px 8px;
+  padding: 14px 18px;
+  background-color: #e8eeff; 
+  border-radius: 16px 16px 0 16px;
+  border: 1px solid #e8eeff;
+}
+
+#sendButton {
+  display: inline-block;
+  margin: 10px -10px -200px 0;
+  background-color: transparent;
+  border-color: transparent;
+}
