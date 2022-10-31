@@ -4,7 +4,7 @@ puts "🫡 Seeding users..."
 
 User.create([
     {
-      first_name: "Jean"
+      first_name: "Jean",
       gender: "Male",
       age: "28",
       location: "Sunset-District",
@@ -14,7 +14,7 @@ User.create([
       profile_photo_link: "https://images.unsplash.com/photo-1535745318714-da922ca9cc81?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
     },
     {
-      first_name: "Levi"
+      first_name: "Levi",
       gender: "Male",
       age: "26",
       location: "Russian Hill",
@@ -24,7 +24,7 @@ User.create([
       profile_photo_link: "https://images.unsplash.com/photo-1577760960310-c49bbb09161e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
     },
     {
-      first_name: "Santiago"
+      first_name: "Santiago",
       gender: "Male",
       age: "25",
       location: "Mission-District",
@@ -34,7 +34,7 @@ User.create([
       profile_photo_link: "https://images.unsplash.com/photo-1583071299210-c6c113f4ac91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=770&q=80"
     },
     {
-      first_name: "Xavier"
+      first_name: "Xavier",
       gender: "Male",
       age: "27",
       location: "Nopa",
@@ -44,7 +44,7 @@ User.create([
       profile_photo_link: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
     },
     {
-      first_name: "Joe"
+      first_name: "Joe",
       gender: "Male",
       age: "31",
       location: "Marina-District",
@@ -54,7 +54,7 @@ User.create([
       profile_photo_link: "https://images.unsplash.com/flagged/photo-1575924795232-1893dbca02f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
     },
     {
-      first_name: "Daniela"
+      first_name: "Daniela",
       gender: "Female",
       age: "28",
       location: "Nopa",
@@ -64,7 +64,7 @@ User.create([
       profile_photo_link: "https://images.unsplash.com/photo-1530047198515-516ff90fc4d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
     },
     {
-      first_name: "Naomi"
+      first_name: "Naomi",
       gender: "Female",
       age: "27",
       location: "Marina-District",
@@ -74,7 +74,7 @@ User.create([
       profile_photo_link: "https://images.unsplash.com/photo-1620613908146-bb9a8bbb7eca?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80"
     },
     {
-      first_name: "Maya"
+      first_name: "Maya",
       gender: "Female",
       age: "26",
       location: "North Beach",
@@ -84,7 +84,7 @@ User.create([
       profile_photo_link: "https://images.unsplash.com/photo-1512361436605-a484bdb34b5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
     },
     {
-      first_name: "Taylor"
+      first_name: "Taylor",
       gender: "Female",
       age: "32",
       location: "Pacific Heights",
@@ -94,7 +94,7 @@ User.create([
       profile_photo_link: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/screen-shot-2020-04-28-at-11-38-08-1588070299.png"
     },
     {
-      first_name: "Cecilia"
+      first_name: "Cecilia",
       gender: "Female",
       age: "26",
       location: "Richmond-District",

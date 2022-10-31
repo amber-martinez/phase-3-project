@@ -3,6 +3,16 @@ class ApplicationController < Sinatra::Base
 
     #Add routes: get, post, patch, delete
 
+    get '/users' do
+        users = User.all
+        users.to_json
+    end
+
+    # get '/messages' do 
+    #     message = Message.all
+    #       messages.to_json
+    # end
+
     # example:
     # get '/messages/:id' do
     #     messages = Message.find(params[:id]) 
