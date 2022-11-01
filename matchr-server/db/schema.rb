@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 2022_10_31_213431) do
     t.string "interest_2"
     t.string "interest_3"
     t.string "profile_photo_link"
+    t.string "email"
+    t.string "password"
+    t.boolean "false"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

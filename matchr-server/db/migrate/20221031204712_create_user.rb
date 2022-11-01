@@ -10,6 +10,9 @@ class CreateUser < ActiveRecord::Migration[6.1]
       t.string :interest_2
       t.string :interest_3
       t.string :profile_photo_link
+      t.string :email
+      t.string :password
+      t.boolean :false
       t.timestamps
     end
 
