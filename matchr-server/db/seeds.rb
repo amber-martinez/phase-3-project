@@ -105,4 +105,5 @@ User.create([
     }
 ])
 
+
 puts "Done seeding! 😁"

@@ -8,10 +8,24 @@ class ApplicationController < Sinatra::Base
         users.to_json
     end
 
-    # get '/messages' do 
-    #     message = Message.all
-    #       messages.to_json
-    # end
+    get '/messages' do
+        messages = Message.all
+        messages.to_json
+    end
+
+    post '/messages' do
+        message = Message.create(
+            recipient: params[:recipient],
+            message: params[:message]
+        )
+
+        message.to_json
+    end
+
+    
+
+end
+
 
     # example:
     # get '/messages/:id' do
@@ -19,16 +33,7 @@ class ApplicationController < Sinatra::Base
         
     #     messages.to_json
     #   end
-    
-    #   post '/messages' do
-    #     message = Message.create(
-    #       body: params[:body],
-    #       username: params[:username]
-    #     )
-    
-    #     message.to_json
-    #   end
-    
+
     #   patch '/messages/:id' do
     #     message = Message.find(params[:id])
     
@@ -47,6 +52,3 @@ class ApplicationController < Sinatra::Base
     
     #     message.to_json
     #   end
-
-
-end
