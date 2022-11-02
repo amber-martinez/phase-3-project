@@ -4,6 +4,7 @@ function SignUp() {
 
     const [ifUser, setIfUser] = useState(false);
     const [firstName, setFirstName] = useState("");
+    const [gender, setGender] = useState("");
     const [age, setAge] = useState("");
     const [location, setLocation] = useState("");
     const [profilePic, setProfilePic] = useState("");
@@ -12,9 +13,14 @@ function SignUp() {
     const [interest3, setInterest3] = useState('baking');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loggedIn, setLoggedIn] = useState(false);
 
     function onFirstNameChange(e) {
         setFirstName(e.target.value)
+    }
+
+    function onGenderChange(e) {
+        setGender(e.target.value)
     }
 
     function onAgeChange(e) {
@@ -54,14 +60,20 @@ function SignUp() {
         setIfUser(true);
 
         const profileData = {
-            firstName: firstName,
+            first_name: firstName,
+            gender: gender,
             age: age,
             location: location,
-            profilePic: profilePic,
-            interests: [interest1, interest2, interest3],
+            profile_photo_link: profilePic,
+            interest_1: interest1,
+            interest_2: interest2,
+            interest_3: interest3,
+            email: email,
+            password: password,
+            logged_in: loggedIn
         };
 
-        fetch(`http://localhost:3000/profile`, {
+        fetch(`http://localhost:3000/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -80,6 +92,18 @@ function SignUp() {
                 <label id="signUpLabels">
                 first name:
                 <input type="text" name="name" id="signUpInputs" value={firstName} onChange={onFirstNameChange}/>
+                </label>
+                <br></br>
+                <br></br>
+                <label id="signUpLabels">
+                    gender: 
+                    <select name={gender} id="signUpInputs" value={gender} onChange={onGenderChange}>
+                        <option>female</option>
+                        <option>male</option>
+                        <option>transgender</option>
+                        <option>non-binary</option>
+                        <option>prefer not to answer</option>
+                    </select>
                 </label>
                 <br></br>
                 <br></br>

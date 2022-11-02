@@ -146,9 +146,10 @@ body {
 #newSignUp {
   z-index: 90;
   background-color: #dee4f4;
-  height: 806px;
+  height: 870px;
   width: 800px;
   margin: auto;
+  margin-bottom: 200px;
   color: #1c1c59;
   padding: 30px;
 }
