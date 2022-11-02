@@ -25,7 +25,7 @@ function Chat({ people }) {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/messages`)
+        fetch(`http://localhost:9292/messages`)
         .then(r => r.json())
         .then(data => setYourMessages(data))
     }, [loadMessages])
@@ -52,7 +52,7 @@ function Chat({ people }) {
                     <p>{msg.message}</p>
                 </div>
                 <div id='rightPhotoCropper'>
-                    <img id="rightIcon" src={yourProfileData.profilePic}></img>
+                    <img id="rightIcon" src={yourProfileData.profile_photo_link}></img>
                 </div>
             </div>
             </div>
@@ -79,21 +79,14 @@ function Chat({ people }) {
         )
 
         setLoadMessages(() => [...loadMessages, newMessagePost]);
-    
-        // let scroll_to_bottom = document.getElementById('chatBubblesWrapper');
-        // function scrollBottom(element) {
-        //     element.scroll({ top: element.scrollHeight, behavior: "smooth"})
-        // }
-
-        // scrollBottom(scroll_to_bottom)
 
     }
 
 
     const peopleIcons = people.map(person => (
-        <span id="chatIconGroup" key={person.name}>
-            <img src={person.image} id="chatIcon" onClick={handleChatIconClick}></img>
-            <p onClick={handleChatNameClick}>{person.name}</p>
+        <span id="chatIconGroup" key={person.first_name}>
+            <img src={person.profile_photo_link} id="chatIcon" onClick={handleChatIconClick}></img>
+            <p onClick={handleChatNameClick}>{person.first_name}</p>
         </span>
     ))
 

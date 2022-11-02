@@ -18,7 +18,9 @@ function ChatBox({ currentChatPerson, chatterPic, loadMessages, greetingLine, ch
             message: messageTyping,
         };
 
-        fetch("http://localhost:3000/messages", {
+        console.log(newMessageData)
+
+        fetch("http://localhost:9292/messages", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

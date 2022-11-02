@@ -5,7 +5,8 @@ import Home from "./components/Home";
 import Chat from "./components/Chat";
 import Profile from "./components/Profile";
 import { Route, Switch } from "react-router-dom";
-import ClickMe from "./components/ClickMe";
+// import ClickMe from "./components/ClickMe";
+import PeopleContainer from "./components/PeopleContainer";
 
 function App() {
 
@@ -13,13 +14,13 @@ function App() {
   const [yourProfile, setYourProfile] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/people`)
+    fetch(`http://localhost:9292/users`)
     .then((r) => r.json())
     .then(data => setPeople(data))
   }, [])
 
   useEffect(() => {
-    fetch(`http://localhost:3000/profile`)
+    fetch(`http://localhost:9292/users`)
     .then(r => r.json())
     .then(data => setYourProfile(data))
   }, [])
@@ -29,7 +30,7 @@ function App() {
       <Header />
       <div>
         <NavBar />
-        <ClickMe />
+        {/* <ClickMe /> */}
         <Switch>
           <Route exact path="/">
             <Home/>

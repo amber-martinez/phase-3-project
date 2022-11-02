@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Person({ name, age, location, image, interests }) {
+function Person({ name, age, location, image, interest1, interest2, interest3 }) {
 
     const [heart, setHeart] = useState(false)
 
@@ -19,7 +19,7 @@ function Person({ name, age, location, image, interests }) {
         <div id="profileText">
             <h1 id="personHeader">{name}, {age}</h1>
             <p id="personLocation">{location}</p>
-            <p id="personInterests">{interests.join(', ')}</p>
+            <p id="personInterests">{interest1}, {interest2}, {interest3}</p>
         </div>
         {/* <div onClick={onClickHeart}> */}
             <img src={heartState} id="heart" onClick={onClickHeart}></img>

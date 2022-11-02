@@ -14,7 +14,6 @@ function PeopleContainer({ people }) {
     let interestsFilterX = interestsFilterState ? "🔽" : "▶️";
     let ageFilterX = ageFilterState ? "🔽" : "▶️";
 
-
     useEffect(() => {
         if (filterState === "All") {
             setFilteredPeople(people)
@@ -132,12 +131,14 @@ function PeopleContainer({ people }) {
         <Person
         key={person.id}
         id={person.id}
-        name={person.name}
+        name={person.first_name}
         gender={person.gender}
         age={person.age}
         location={person.location}
-        image={person.image}
-        interests={person.interests}
+        image={person.profile_photo_link}
+        interest1={person.interest_1}
+        interest2={person.interest_2}
+        interest3={person.interest_3}
         />
     ))
 

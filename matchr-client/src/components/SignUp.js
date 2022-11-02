@@ -10,6 +10,8 @@ function SignUp() {
     const [interest1, setInterest1] = useState('baking');
     const [interest2, setInterest2] = useState('baking');
     const [interest3, setInterest3] = useState('baking');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     function onFirstNameChange(e) {
         setFirstName(e.target.value)
@@ -27,9 +29,6 @@ function SignUp() {
         setProfilePic(e.target.value)
     }
 
-
-    // [...currentstate, newData]
-
     function handleInterest1(e) {
         setInterest1(e.target.value)
     }
@@ -40,6 +39,14 @@ function SignUp() {
 
     function handleInterest3(e) {
         setInterest3(e.target.value)
+    }
+
+    function onEmailChange(e) {
+        setEmail(e.target.value)
+    }
+
+    function onPasswordChange(e) {
+        setPassword(e.target.value)
     }
 
     function onSignUpSubmit(event) {
@@ -142,6 +149,18 @@ function SignUp() {
                 <label id="signUpLabels">
                 profile photo:
                 <input type="text" name="profilePic" id="signUpInputs" value={profilePic} onChange={onProfilePicChange}/>
+                </label>
+                <br></br>
+                <br></br>
+                <label id="signUpLabels">
+                email:
+                <input type="text" name="email" id="signUpInputs" value={email} onChange={onEmailChange}/>
+                </label>
+                <br></br>
+                <br></br>
+                <label id="signUpLabels">
+                password:
+                <input type="password" name="password" id="signUpInputs" value={password} onChange={onPasswordChange}/>
                 </label>
                 <br></br>
                 <br></br>
