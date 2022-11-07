@@ -12,7 +12,7 @@ class CreateUser < ActiveRecord::Migration[6.1]
       t.string :profile_photo_link
       t.string :email
       t.string :password
-      t.boolean :false
+      t.boolean :logged_in
       t.timestamps
     end
 

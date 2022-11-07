@@ -19,9 +19,12 @@ function Chat({ people }) {
     }, [currentChatPerson])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/profile`)
+        fetch(`http://localhost:9292/users`)
         .then(r => r.json())
-        .then(data => setYourProfileData(data))
+        .then(data => {
+            const profile = data.filter(person => person.logged_in == true)
+            setYourProfileData(profile[0])
+        })
     }, [])
 
     useEffect(() => {
@@ -72,7 +75,7 @@ function Chat({ people }) {
                     <p>{newMessage.message}</p>
                 </div>
                 <div id='rightPhotoCropper'>
-                    <img id="rightIcon" src={yourProfileData.profilePic}></img>
+                    <img id="rightIcon" src={yourProfileData.profile_photo_link}></img>
                 </div>
             </div>
             </div>
@@ -82,8 +85,10 @@ function Chat({ people }) {
 
     }
 
+    const filteredPeople = people.filter(person => person.logged_in == null)
 
-    const peopleIcons = people.map(person => (
+
+    const peopleIcons = filteredPeople.map(person => (
         <span id="chatIconGroup" key={person.first_name}>
             <img src={person.profile_photo_link} id="chatIcon" onClick={handleChatIconClick}></img>
             <p onClick={handleChatNameClick}>{person.first_name}</p>

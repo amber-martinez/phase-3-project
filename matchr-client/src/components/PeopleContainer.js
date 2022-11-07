@@ -98,11 +98,11 @@ function PeopleContainer({ people }) {
         const peopleIntFilter = people.filter(person => {
             if (e.target.innerText === "all") {
                 return person
-            } else if (person.interests[0] === e.target.innerText) {
+            } else if (person.interest_1 === e.target.innerText) {
                 return person
-            } else if (person.interests[1] === e.target.innerText) {
+            } else if (person.interest_2 === e.target.innerText) {
                 return person
-            } else if (person.interests[2] === e.target.innerText) {
+            } else if (person.interest_3 === e.target.innerText) {
                 return person
             }
         })
@@ -112,14 +112,21 @@ function PeopleContainer({ people }) {
 
     function handleAgeClick(e) {
         const peopleAgeFilter = people.filter(person => {
+            console.log(person)
             if (e.target.innerText === "all") {
                 return person
-            } else if (person.ageBracket === e.target.innerText) {
-                return person
-            } else if (person.ageBracket === e.target.innerText) {
-                return person
-            } else if (person.ageBracket === e.target.innerText) {
-                return person
+            } else if (e.target.innerText === "20-25") {
+                if (person.age <= 25) {
+                    return person
+                }
+            } else if (e.target.innerText === "26-30") {
+                if (person.age <= 30 && person.age >= 26) {
+                    return person
+                }
+            } else if (e.target.innerText === "31-35") {
+                if (person.age >= 31 && person.age >=31 ) {
+                    return person
+                }
             }
         })
         setFilterState("Age");

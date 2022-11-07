@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_31_213431) do
+ActiveRecord::Schema.define(version: 2022_11_07_175951) do
+
+  create_table "inputs", force: :cascade do |t|
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.string "recipient"
@@ -30,7 +37,7 @@ ActiveRecord::Schema.define(version: 2022_10_31_213431) do
     t.string "profile_photo_link"
     t.string "email"
     t.string "password"
-    t.boolean "false"
+    t.boolean "logged_in"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

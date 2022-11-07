@@ -3,6 +3,31 @@ body {
   font-family: Avenir Next;
 }
 
+a:link {
+  color:#1c1c59;
+}
+
+a:visited {
+  color:#1c1c59;
+}
+
+input:focus{
+  outline: 2px solid transparent;
+}
+
+::placeholder:focus {
+  color: #1c1c59;
+}
+
+select {
+  color: grey;
+}
+
+select:focus{
+  outline: 2px solid transparent;
+}
+
+
 #chatBoxOutline {
   border: 2px solid #1c1c59;
   display: inline-block;
@@ -11,6 +36,8 @@ body {
   height: 700px;
   width: 1300px;
   overflow-y: scroll;
+  margin-bottom: 150px;
+  z-index: 1;
   /* padding: 300px 650px 400px 650px; */
 }
 
@@ -143,20 +170,35 @@ body {
   padding-bottom: 13px;
 }
 
+#navLinks {
+  /* color: black; */
+  text-decoration: none;
+}
+
 #newSignUp {
   z-index: 90;
-  background-color: #dee4f4;
-  height: 870px;
+  /* background-color: #dee4f4; */
+  height: 890px;
   width: 800px;
   margin: auto;
   margin-bottom: 200px;
+  margin-top: -25px;
   color: #1c1c59;
   padding: 30px;
 }
 
-/* #signUpForm {
-  text-align: left;
-} */
+#signUpOption {
+  background-color:grey;
+}
+
+#signUpInputs {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #1c1c59;
+  font-family: Avenir Next;
+  font-size: 20px;
+  width: 300px;
+}
 
 #signUpLabels {
   display: flex;
@@ -172,15 +214,15 @@ body {
 
 
 #signUpSubmit {
-  margin: 0;
-  background-color: #adb5c9;
-  color: #1c1c59;
-  padding: 18px;
-  border-radius: 30px;
-  border-color: #9097a8;
-  border-style: solid;
-  font-family: Avenir Next;
-  font-size: 17px;
+  padding: 13px 25px 13px 25px;
+  background-color: #8198d2;
+  margin: auto;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  width: 150px;
+  font-size: 20px;
+  border-radius: 5px;
+  text-decoration: none;
 }
 
 #filterGroup {
@@ -227,6 +269,45 @@ body {
   font-family: Avenir Next;
 }
 
+#logInContainer {
+  margin: auto;
+  display: inline-block;
+  background-color: #e8eeff;
+  height: 450px;
+  width: 600px;
+  padding: 50px;
+  border-radius: 7px;
+  box-shadow: 0 2px 7px 0 rgba(0,0,0,0.2);
+}
+
+#logInTextFields {
+  width: 420px;
+  height: 26px;
+  border-radius: 7px;
+  padding: 10px;
+  border: 2px solid #8198d2;
+}
+
+#logInButton {
+  padding: 13px 25px 13px 25px;
+  background-color: #8198d2;
+  margin: auto;
+  margin-bottom: 25px;
+  margin-top: 40px;
+  width: 300px;
+  color: white;
+  font-size: 20px;
+  border-radius: 5px;
+  z-index: 10;
+  text-decoration: none;
+}
+
+#logInFields {
+  font-size: 20px;
+  text-align: left;
+  padding-left: 72px;
+}
+
 .NavBar {
   display: flex;
   flex-direction: row;
@@ -239,6 +320,7 @@ body {
   height: auto;
   width: 100vw;
   border-top: 1px solid #93a6d6;
+  z-index: 4;
 }
 
 #navIcon {
