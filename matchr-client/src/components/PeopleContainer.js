@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import Person from "./Person";
 
 
@@ -9,6 +10,8 @@ function PeopleContainer({ people }) {
     const [ageFilterState, setAgeFilterX] = useState(false);
     const [filteredPeople, setFilteredPeople] = useState([]);
     const [filterState, setFilterState] = useState("All")
+    const [peopleGroup, setPeopleGroup] = useState([]);
+    const [yourProfileData, setYourProfileData] = useState([])
 
     let locationFilterX = locationFilterState ? "🔽" : "▶️";
     let interestsFilterX = interestsFilterState ? "🔽" : "▶️";
@@ -19,6 +22,15 @@ function PeopleContainer({ people }) {
             setFilteredPeople(people)
         }
     })
+
+    useEffect(() => {
+        fetch(`http://localhost:9292/users`)
+        .then(r => r.json())
+        .then(data => {
+            const profile = data.filter(person => person.logged_in == true)
+            setYourProfileData(profile[0])
+        })
+    }, [])
 
     function handleLocationFilter(e) {
         e.preventDefault();
@@ -132,24 +144,27 @@ function PeopleContainer({ people }) {
         setFilterState("Age");
         setFilteredPeople(peopleAgeFilter);
     }
-    
 
-    const peopleGroup = filteredPeople.map(person => (
-        <Person
-        key={person.id}
-        id={person.id}
-        name={person.first_name}
-        gender={person.gender}
-        age={person.age}
-        location={person.location}
-        image={person.profile_photo_link}
-        interest1={person.interest_1}
-        interest2={person.interest_2}
-        interest3={person.interest_3}
-        />
-    ))
+    useEffect(() => {
 
-    return (
+        setPeopleGroup(filteredPeople.filter(person => person.logged_in != true).map(person => (
+            <Person
+            key={person.id}
+            id={person.id}
+            name={person.first_name}
+            gender={person.gender}
+            age={person.age}
+            location={person.location}
+            image={person.profile_photo_link}
+            interest1={person.interest_1}
+            interest2={person.interest_2}
+            interest3={person.interest_3}
+            />
+        )))
+
+    }, [filteredPeople])
+
+    const peopleContainer = (
         <span id="peopleContainer">
         <span id="filterGroup">
             <span>
@@ -172,6 +187,20 @@ function PeopleContainer({ people }) {
             {peopleGroup}
         </span>
         </span>
+    )
+
+    const signInForPeople = (
+        <div>
+            <img id="wrongLoginImg" src="https://media4.giphy.com/media/BHnkkJ67uggC8j3Aek/giphy.gif"></img>
+            <h3>whoa, who are you?</h3>
+            <p>make an account <NavLink to="/signup">here</NavLink>, or try to <NavLink to="/login">log in</NavLink>.</p>
+        </div>
+    )
+
+    return (
+        <div>
+            {yourProfileData ? peopleContainer : signInForPeople}
+        </div>
     )
 }
 

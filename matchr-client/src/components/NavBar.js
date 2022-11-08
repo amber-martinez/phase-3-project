@@ -4,19 +4,36 @@ import React, { useState, useEffect } from "react";
 // import Profile from "./Profile";
 import { NavLink } from "react-router-dom";
 
-function NavBar({ people }) {
+function NavBar() {
 
     const [loggedIn, setLoggedIn] = useState(false);
+    const [searchForLogin, setSearchForLogin] = useState([]);
+    const [load, setLoad] = useState(false);
 
     useEffect(() => {
-        const searchForLogin = people.filter(person => person.logged_in == true);
-  
+        
+        fetch(`http://localhost:9292/users`)
+        .then(r => r.json())
+        .then(data => {
+            setSearchForLogin(data.filter(person => {
+                if (person.logged_in == true) {
+                    return person
+                }
+            }));
+        })
+    }, [searchForLogin])
+
+
+    useEffect(() => {
+
         if (searchForLogin.length > 0) {
-          console.log(searchForLogin)
-          setLoggedIn(true)
+            setLoggedIn(true)
+        } else {
+            setLoggedIn(false)
         }
-  
-    }, [])
+
+    }, [searchForLogin])
+
 
     const profilePage = (
         <NavLink to="/profile">
@@ -44,10 +61,7 @@ function NavBar({ people }) {
                 </NavLink>
             </span>
             <span id="navSpan">
-
                 {loggedIn ? profilePage : loginPage }
-
-
             </span>
         </div>
     )

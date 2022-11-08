@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 import ChatBox from "./ChatBox"
 
 function Chat({ people }) {
@@ -85,7 +86,7 @@ function Chat({ people }) {
 
     }
 
-    const filteredPeople = people.filter(person => person.logged_in == null)
+    const filteredPeople = people.filter(person => person.logged_in !=true )
 
 
     const peopleIcons = filteredPeople.map(person => (
@@ -95,7 +96,7 @@ function Chat({ people }) {
         </span>
     ))
 
-    return (
+    const chat = (
         <div>
             <span>
                 {peopleIcons}
@@ -103,6 +104,22 @@ function Chat({ people }) {
             <div>
                 <ChatBox currentChatPerson={currentChatPerson} chatterPic={chatterPic} loadMessages={loadMessages} greetingLine={greetingLine} chatStart={chatStart} handleNewMessage={handleNewMessage}/>
             </div>
+        </div>
+    )
+
+    const signInToChat = (
+        <div>
+            <img id="wrongLoginImg" src="https://media4.giphy.com/media/BHnkkJ67uggC8j3Aek/giphy.gif"></img>
+            <h3>whoa, who are you?</h3>
+            <p>make an account <NavLink to="/signup">here</NavLink>, or try to <NavLink to="/login">log in</NavLink>.</p>
+        </div>
+    )
+
+    console.log(yourProfileData == true)
+
+    return (
+        <div>
+            { yourProfileData ? chat : signInToChat }
         </div>
     )
 }

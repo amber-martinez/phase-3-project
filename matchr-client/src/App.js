@@ -7,12 +7,12 @@ import Profile from "./components/Profile";
 import { Route, Switch } from "react-router-dom";
 import LogIn from "./components/LogIn";
 // import ClickMe from "./components/ClickMe";
+import PeopleContainer from "./components/PeopleContainer";
 import SignUp from "./components/SignUp";
 
 function App() {
 
   const [people, setPeople] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     fetch(`http://localhost:9292/users`)
@@ -37,9 +37,10 @@ function App() {
           </Route>
           <Route exact path="/login">
             <LogIn/>
+            {/* <Profile yourProfile={yourProfile}/> */}
           </Route>
           <Route exact path="/profile">
-            <Profile/>
+            <Profile profileData={people}/>
           </Route>
           <Route exact path="/signup">
             <SignUp/>

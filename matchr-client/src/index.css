@@ -110,13 +110,80 @@ select:focus{
 }
 
 #editProfileButton {
-  background-color: #8198d2;
+  background-color: #8198d2be;
   padding: 8px 15px 8px 15px;
   color: white;
-  font-size: 15px;
+  font-size: 14px;
+  width: 100px;
   font-family: Avenir Next;
   border-color: transparent;
-  border-radius: 30px;
+  border-radius: 5px;
+  margin: auto;
+  margin-bottom: 17px;
+  margin-top: 28px;
+}
+
+#saveButton {
+  display: inline-block;
+  background-color: #8198d2be;
+  padding: 7px 13px 7px 13px;
+  color: white;
+  font-size: 14px;
+  width: 80px;
+  font-family: Avenir Next;
+  border-color: transparent;
+  border-radius: 5px;
+  margin: auto;
+  margin-left: 7px;
+  /* margin-top: 27px; */
+}
+
+#editProfileBackButton {
+  display: inline-block;
+  background-color: #8198d273;
+  padding: 7px 13px 7px 13px;
+  color: white;
+  font-size: 14px;
+  width: 80px;
+  font-family: Avenir Next;
+  border-color: transparent;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 27px;
+  margin-bottom: 10px;
+  margin-right: 7px;
+}
+
+#editInputsGender {
+  margin: auto;
+  margin-top: 21px;
+  border: none;
+  border-bottom: 1px solid #1c1c59;
+  background: transparent;
+  color: #1c1c59;
+  font-family: Avenir Next;
+}
+
+#editInputs {
+  margin: auto;
+  margin-top: 15px;
+  border: none;
+  border-bottom: 1px solid #1c1c59;
+  background: transparent;
+  color: #1c1c59;
+  font-family: Avenir Next;
+}
+
+#logOutButton {
+  background-color: #8198d2be;
+  padding: 8px 15px 8px 15px;
+  color: white;
+  font-size: 14px;
+  width: 100px;
+  font-family: Avenir Next;
+  border-color: transparent;
+  border-radius: 5px;
+  margin: auto;
 }
 
 #headerImg {
@@ -308,6 +375,10 @@ select:focus{
   padding-left: 72px;
 }
 
+#wrongLoginImg {
+  height: 255px;
+}
+
 .NavBar {
   display: flex;
   flex-direction: row;
@@ -363,11 +434,23 @@ select:focus{
   object-fit: cover;
   border: 3px solid #8198d2;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
 #personHeader {
   margin: 10px 0px -10px 0px;
   font-size: 28px;
+}
+
+.yourProfileCard {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: inline-block;
+  padding: 20px 40px 100px 40px;
+  margin: 15px;
+  height: 504px;
+  width: 330px;
+  background-color: #dee4f4;
+  border-radius: 10px;
 }
 
 #personInterests {

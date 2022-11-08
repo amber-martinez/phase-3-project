@@ -62,6 +62,12 @@ class ApplicationController < Sinatra::Base
         loginInput.to_json
     end
 
+    delete '/inputs' do
+        inputs = Input.destroy_all
+        
+        inputs.to_json
+    end
+
     
 
 end
