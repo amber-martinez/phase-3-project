@@ -3,7 +3,9 @@ This application is a dating app that allows you to create and edit your profile
 
 ## Features ##
 * Create a profile
-* Access your profile and update it
-* 'Like' people on the app
-* Access your 'liked' people
+* Login to profile through email/password
+* Update profile
 * Chat with others
+* Messages you send to others are recorded
+* 'Like' people on the app
+* Screen content dependant on whether you are logged in or not
