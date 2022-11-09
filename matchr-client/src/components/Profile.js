@@ -13,7 +13,6 @@ function Profile() {
     const [profileState, setProfileState] = useState(false);
     const [profileMatch, setProfileMatch] = useState({})
     const [loginInput, setLoginInput] = useState({});
-    const [load, setLoad] = useState(false);
     const [editProfileClick, setEditProfileClick] = useState(false);
     const [editedGender, setEditedGender] = useState("");
     const [editedLocation, setEditedLocation] = useState("");
@@ -61,11 +60,8 @@ function Profile() {
         // .then(data => console.log(data))
 
         // console.log(profilesData)
-    }, [loginInput])
+    }, [loginInput]) 
 
-    // useEffect(() => {
-    //     setLoad(!load)
-    // }, [loginInput, profilesData])
 
     useEffect(() => {
         // console.log(loadedProfileData)
@@ -275,7 +271,7 @@ function Profile() {
                         : <div onClick={onEditProfileClick}><p id="editProfileButton">edit profile</p></div>}
                         {editProfileClick ? null
                         : <div onClick={onLogoutClick}>
-                            <NavLink to="/login">
+                            <NavLink to="/login" id="logOutLink">
                                 <p id="logOutButton">log out</p>
                             </NavLink>
                         </div>
@@ -288,7 +284,7 @@ function Profile() {
         console.log('no match ready')
     }
 
-    }, [loadedProfileData, editProfileClick, editedGender, editedInterest1, editedInterest2, editedInterest3, editedLocation])
+    }, [loginInput, profileState, loadedProfileData, editProfileClick, editedGender, editedInterest1, editedInterest2, editedInterest3, editedLocation])
 
     // bird gif credit: https://giphy.com/gifs/upset-blue-jay-cute-mad-BHnkkJ67uggC8j3Aek
 

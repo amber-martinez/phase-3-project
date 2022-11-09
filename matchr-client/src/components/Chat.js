@@ -36,8 +36,6 @@ function Chat({ people }) {
 
 
             const updatedMessages = data.filter(message => {
-                // console.log(message)
-                // console.log(yourProfileData.id)
                 if (message.user_id == yourProfileData.id) {
                     return message
                 }
@@ -123,7 +121,7 @@ function Chat({ people }) {
 
     const signInToChat = (
         <div>
-            <img id="wrongLoginImg" src="https://media4.giphy.com/media/BHnkkJ67uggC8j3Aek/giphy.gif"></img>
+            <img id="wrongLoginImg" src="https://media1.giphy.com/media/j2Fogdl6QqoxEJcUb3/giphy.gif"></img>
             <h3>whoa, who are you?</h3>
             <p>make an account <NavLink to="/signup">here</NavLink>, or try to <NavLink to="/login">log in</NavLink>.</p>
         </div>
