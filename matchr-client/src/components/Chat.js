@@ -31,8 +31,22 @@ function Chat({ people }) {
     useEffect(() => {
         fetch(`http://localhost:9292/messages`)
         .then(r => r.json())
-        .then(data => setYourMessages(data))
-    }, [loadMessages])
+        .then(data => {
+            console.log(data.find)
+
+
+            const updatedMessages = data.filter(message => {
+                // console.log(message)
+                // console.log(yourProfileData.id)
+                if (message.user_id == yourProfileData.id) {
+                    return message
+                }
+            })
+            // console.log(updatedMessages)
+            setYourMessages(updatedMessages)
+        })
+
+    }, [loadMessages, yourProfileData])
 
     function handleChatIconClick(e) {
         console.log(e.target)
@@ -102,7 +116,7 @@ function Chat({ people }) {
                 {peopleIcons}
             </span>
             <div>
-                <ChatBox currentChatPerson={currentChatPerson} chatterPic={chatterPic} loadMessages={loadMessages} greetingLine={greetingLine} chatStart={chatStart} handleNewMessage={handleNewMessage}/>
+                <ChatBox currentChatPerson={currentChatPerson} chatterPic={chatterPic} loadMessages={loadMessages} greetingLine={greetingLine} chatStart={chatStart} yourProfileData={yourProfileData} handleNewMessage={handleNewMessage}/>
             </div>
         </div>
     )
@@ -114,8 +128,6 @@ function Chat({ people }) {
             <p>make an account <NavLink to="/signup">here</NavLink>, or try to <NavLink to="/login">log in</NavLink>.</p>
         </div>
     )
-
-    console.log(yourProfileData == true)
 
     return (
         <div>

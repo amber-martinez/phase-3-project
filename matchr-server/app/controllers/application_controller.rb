@@ -65,7 +65,8 @@ class ApplicationController < Sinatra::Base
     post '/messages' do
         message = Message.create(
             recipient: params[:recipient],
-            message: params[:message]
+            message: params[:message],
+            user_id: params[:user_id]
         )
 
         message.to_json

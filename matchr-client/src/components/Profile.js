@@ -69,11 +69,14 @@ function Profile() {
 
     useEffect(() => {
         // console.log(loadedProfileData)
-        Array.from(profilesData).forEach(person => {
+        console.log(profilesData)
+        console.log(loginInput)
+        console.log(profileState)
+        profilesData.forEach(person => {
             // console.log(person.email, loginInput.email)
             // console.log(person.password, loginInput.password)
             if (person.email == loginInput.email && person.password == loginInput.password ) {
-                // console.log(person.id, "YES match!")
+                console.log(person.email)
                 setProfileState(true)
                 setProfileMatch(person)
                 setLoadedProfileData(person)
@@ -104,7 +107,7 @@ function Profile() {
         })
 
         // console.log(loadedProfileData)
-    }, [profilesData])
+    }, [profilesData, loginInput])
 
     // console.log(profileState)
 
@@ -195,6 +198,7 @@ function Profile() {
 
     useEffect(() => {
 
+        if (profileState == true) {
         setProfileJSX(
             <div>
                 <div className="yourProfileCard">
@@ -280,6 +284,9 @@ function Profile() {
                 </div>
             </div>
         )
+    } else {
+        console.log('no match ready')
+    }
 
     }, [loadedProfileData, editProfileClick, editedGender, editedInterest1, editedInterest2, editedInterest3, editedLocation])
 
@@ -297,6 +304,7 @@ function Profile() {
     return (
         <div>
             {profileState ? profileJSX : noSignIn}
+            {/* {profileJSX} */}
         </div>
     )
 }
