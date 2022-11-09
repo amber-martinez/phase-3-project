@@ -5,9 +5,11 @@ import { NavLink } from "react-router-dom";
 // TO MAKE THIS WORK - NOTE
 // NEEDS TO SEARCH THE SERVER FOR A MATCH BETWEEN EMAIL / PASSWORD
 
-function Profile({ profileData }) {
+function Profile() {
 
     const [loadedProfileData, setLoadedProfileData] = useState({});
+    const [profileJSX, setProfileJSX] = useState()
+    const [profilesData, setProfilesData] = useState([]);
     const [profileState, setProfileState] = useState(false);
     const [profileMatch, setProfileMatch] = useState({})
     const [loginInput, setLoginInput] = useState({});
@@ -41,28 +43,40 @@ function Profile({ profileData }) {
     }
 
 
-
     useEffect(() => {
         fetch('http://localhost:9292/inputs')
         .then(r => r.json())
         .then(data => {
             const lastInput = data.slice(-1)[0];
             setLoginInput(lastInput)
-            setLoad(!load)
         })
+
+        console.log(profileState)
     }, [])
 
     useEffect(() => {
         fetch(`http://localhost:9292/users`)
         .then(r => r.json())
+        .then(data => setProfilesData(data))
         // .then(data => console.log(data))
 
-        Array.from(profileData).forEach(person => {
-            // console.log(person)
+        // console.log(profilesData)
+    }, [loginInput])
+
+    // useEffect(() => {
+    //     setLoad(!load)
+    // }, [loginInput, profilesData])
+
+    useEffect(() => {
+        // console.log(loadedProfileData)
+        Array.from(profilesData).forEach(person => {
+            // console.log(person.email, loginInput.email)
+            // console.log(person.password, loginInput.password)
             if (person.email == loginInput.email && person.password == loginInput.password ) {
                 // console.log(person.id, "YES match!")
                 setProfileState(true)
                 setProfileMatch(person)
+                setLoadedProfileData(person)
 
                 fetch(`http://localhost:9292/users/${person.id}`, {
                     method: "PATCH",
@@ -84,17 +98,20 @@ function Profile({ profileData }) {
                     }),
                   })
                     .then((r) => r.json())
-                    .then(data => setLoadedProfileData(data))
+                    // .then(data => setLoadedProfileData(data))
 
             }
         })
-    }, [loginInput])
 
-    console.log(profileState)
+        // console.log(loadedProfileData)
+    }, [profilesData])
+
+    // console.log(profileState)
 
 
     function onLogoutClick() {
         setProfileState(false)
+        setLoadedProfileData({})
 
         fetch(`http://localhost:9292/users/${profileMatch.id}`, {
             method: "PATCH",
@@ -139,10 +156,12 @@ function Profile({ profileData }) {
     }
 
     function onEditProfileClick() {
+        console.log('hi!')
         setEditProfileClick(!editProfileClick)
     }
 
     function onClickBackButton() {
+        console.log('hi!')
         setEditProfileClick(false)
     }
 
@@ -170,94 +189,99 @@ function Profile({ profileData }) {
         .then(data => setLoadedProfileData(data))
 
         setEditProfileClick(false)
+        setProfileState(true)
+
     }
 
+    useEffect(() => {
 
-    const loadProfile = (
-        <div>
-            <div className="yourProfileCard">
-                <img src={loadedProfileData.profile_photo_link} id="personIcon"></img>
-                <div id="profileText">
-
-                    <h1 id="personHeader">{loadedProfileData.first_name}, {loadedProfileData.age}</h1>
-
-                    
-                    {editProfileClick ? 
+        setProfileJSX(
+            <div>
+                <div className="yourProfileCard">
+                    <img src={loadedProfileData.profile_photo_link} id="personIcon"></img>
+                    <div id="profileText">
+    
+                        <h1 id="personHeader">{loadedProfileData.first_name}, {loadedProfileData.age}</h1>
+    
+                        
+                        {editProfileClick ? 
+                            <div>
+                            <select required id="editInputsGender" onChange={onGenderEdit}>
+                                <option value="" disabled selected>gender</option>
+                                <option className="signUpOption">female</option>
+                                <option className="signUpOption">male</option>
+                                <option className="signUpOption">transgender</option>
+                                <option className="signUpOption">non-binary</option>
+                                <option className="signUpOption">prefer not to answer</option>
+                            </select>
+                            </div>
+                        : null}
+    
+                        {editProfileClick ? <input type="text" placeholder="location" id="editInputs" onChange={onLocationEdit}></input>
+                        :<p id="personLocation">{loadedProfileData.location}</p>}
+    
+                        {editProfileClick ? 
                         <div>
-                        <select required id="editInputsGender" onChange={onGenderEdit}>
-                            <option value="" disabled selected>gender</option>
-                            <option className="signUpOption">female</option>
-                            <option className="signUpOption">male</option>
-                            <option className="signUpOption">transgender</option>
-                            <option className="signUpOption">non-binary</option>
-                            <option className="signUpOption">prefer not to answer</option>
-                        </select>
+                            <select required id="editInputs" value={editedInterest1} onChange={onInterest1Edit}>
+                                <option value="" disabled selected>interest</option>
+                                <option>baking</option>
+                                <option>biking</option>
+                                <option>concerts</option>
+                                <option>cooking</option>
+                                <option>drinking</option>
+                                <option>gaming</option>
+                                <option>gardening</option>
+                                <option>hiking</option>
+                                <option>pilates</option>
+                                <option>pottery</option>
+                            </select>
+                            <br></br>
+                            <select required id="editInputs" value={editedInterest2} onChange={onInterest2Edit}>
+                                <option value="" disabled selected>interest</option>
+                                <option>baking</option>
+                                <option>biking</option>
+                                <option>concerts</option>
+                                <option>cooking</option>
+                                <option>drinking</option>
+                                <option>gaming</option>
+                                <option>gardening</option>
+                                <option>hiking</option>
+                                <option>pilates</option>
+                                <option>pottery</option>
+                            </select>
+                            <br></br>
+                            <select required id="editInputs" value={editedInterest3} onChange={onInterest3Edit}>
+                                <option value="" disabled selected>interest</option>
+                                <option>baking</option>
+                                <option>biking</option>
+                                <option>concerts</option>
+                                <option>cooking</option>
+                                <option>drinking</option>
+                                <option>gaming</option>
+                                <option>gardening</option>
+                                <option>hiking</option>
+                                <option>pilates</option>
+                                <option>pottery</option>
+                            </select>
+                            <br></br>
                         </div>
-                    : null}
-
-                    {editProfileClick ? <input type="text" placeholder="location" id="editInputs" onChange={onLocationEdit}></input>
-                    :<p id="personLocation">{loadedProfileData.location}</p>}
-
-                    {editProfileClick ? 
-                    <div>
-                        <select required id="editInputs" value={editedInterest1} onChange={onInterest1Edit}>
-                            <option value="" disabled selected>interest</option>
-                            <option>baking</option>
-                            <option>biking</option>
-                            <option>concerts</option>
-                            <option>cooking</option>
-                            <option>drinking</option>
-                            <option>gaming</option>
-                            <option>gardening</option>
-                            <option>hiking</option>
-                            <option>pilates</option>
-                            <option>pottery</option>
-                        </select>
-                        <br></br>
-                        <select required id="editInputs" value={editedInterest2} onChange={onInterest2Edit}>
-                            <option value="" disabled selected>interest</option>
-                            <option>baking</option>
-                            <option>biking</option>
-                            <option>concerts</option>
-                            <option>cooking</option>
-                            <option>drinking</option>
-                            <option>gaming</option>
-                            <option>gardening</option>
-                            <option>hiking</option>
-                            <option>pilates</option>
-                            <option>pottery</option>
-                        </select>
-                        <br></br>
-                        <select required id="editInputs" value={editedInterest3} onChange={onInterest3Edit}>
-                            <option value="" disabled selected>interest</option>
-                            <option>baking</option>
-                            <option>biking</option>
-                            <option>concerts</option>
-                            <option>cooking</option>
-                            <option>drinking</option>
-                            <option>gaming</option>
-                            <option>gardening</option>
-                            <option>hiking</option>
-                            <option>pilates</option>
-                            <option>pottery</option>
-                        </select>
-                        <br></br>
+                        : <p id="personInterests">{loadedProfileData.interest_1}, {loadedProfileData.interest_2}, {loadedProfileData.interest_3}</p>}
+    
+                        {editProfileClick ? <div><p id="editProfileBackButton" onClick={onClickBackButton}>back</p> <p id="saveButton" onClick={onEditProfileSave}>save</p></div> 
+                        : <div onClick={onEditProfileClick}><p id="editProfileButton">edit profile</p></div>}
+                        {editProfileClick ? null
+                        : <div onClick={onLogoutClick}>
+                            <NavLink to="/login">
+                                <p id="logOutButton">log out</p>
+                            </NavLink>
+                        </div>
+                        }
                     </div>
-                    : <p id="personInterests">{loadedProfileData.interest_1}, {loadedProfileData.interest_2}, {loadedProfileData.interest_3}</p>}
-
-                    {editProfileClick ? <div><p id="editProfileBackButton" onClick={onClickBackButton}>back</p> <p id="saveButton" onClick={onEditProfileSave}>save</p></div> 
-                    : <div onClick={onEditProfileClick}><p id="editProfileButton">edit profile</p></div>}
-                    {editProfileClick ? null
-                    : <div onClick={onLogoutClick}>
-                        <NavLink to="/login">
-                            <p id="logOutButton">log out</p>
-                        </NavLink>
-                    </div>
-                    }
                 </div>
             </div>
-        </div>
-    )
+        )
+
+    }, [loadedProfileData, editProfileClick, editedGender, editedInterest1, editedInterest2, editedInterest3, editedLocation])
 
     // bird gif credit: https://giphy.com/gifs/upset-blue-jay-cute-mad-BHnkkJ67uggC8j3Aek
 
@@ -272,7 +296,7 @@ function Profile({ profileData }) {
 
     return (
         <div>
-            {profileState ? loadProfile : noSignIn}
+            {profileState ? profileJSX : noSignIn}
         </div>
     )
 }

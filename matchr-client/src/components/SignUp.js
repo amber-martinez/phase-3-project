@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 function SignUp() {
-    const [firstName, setFirstName] = useState("");
+    const [first_name, setFirst_Name] = useState("");
     const [gender, setGender] = useState("");
     const [age, setAge] = useState("");
     const [location, setLocation] = useState("");
-    const [profilePic, setProfilePic] = useState("");
-    const [interest1, setInterest1] = useState("");
-    const [interest2, setInterest2] = useState("");
-    const [interest3, setInterest3] = useState("");
+    const [profile_photo_link, setProfilePic] = useState("");
+    const [interest_1, setInterest_1] = useState("");
+    const [interest_2, setInterest_2] = useState("");
+    const [interest_3, setInterest_3] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [logged_in, setLogged_in] = useState(false);
 
     function onFirstNameChange(e) {
-        setFirstName(e.target.value)
+        setFirst_Name(e.target.value)
         e.target.style.color = '#1c1c59';
     }
 
@@ -39,18 +39,18 @@ function SignUp() {
         e.target.style.color = '#1c1c59';
     }
 
-    function handleInterest1(e) {
-        setInterest1(e.target.value)
+    function handleinterest_1(e) {
+        setInterest_1(e.target.value)
         e.target.style.color = '#1c1c59';
     }
 
-    function handleInterest2(e) {
-        setInterest2(e.target.value)
+    function handleinterest_2(e) {
+        setInterest_2(e.target.value)
         e.target.style.color = '#1c1c59';
     }
 
-    function handleInterest3(e) {
-        setInterest3(e.target.value)
+    function handleinterest_3(e) {
+        setInterest_3(e.target.value)
         e.target.style.color = '#1c1c59';
     }
 
@@ -64,23 +64,25 @@ function SignUp() {
 
     function onSignUpSubmit(event) {
         event.preventDefault();
-        setLoggedIn(true)
+        setLogged_in(true)
 
         const profileData = {
-            first_name: firstName,
+            first_name: first_name,
             gender: gender,
             age: age,
             location: location,
-            profile_photo_link: profilePic,
-            interest_1: interest1,
-            interest_2: interest2,
-            interest_3: interest3,
+            interest_1: interest_1,
+            interest_2: interest_2,
+            interest_3: interest_3,
+            profile_photo_link: profile_photo_link,
             email: email,
             password: password,
-            logged_in: loggedIn
+            logged_in: logged_in
         };
 
-        fetch(`http://localhost:9292/messages`, {
+        console.log(profileData)
+
+        fetch(`http://localhost:9292/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -97,7 +99,7 @@ function SignUp() {
             <p id="signUpHeader"><strong>sign up for matchr.</strong></p>
             <form id="signUpForm">
                 <label id="signUpLabels">
-                <input type="text" name="name" id="signUpInputs" value={firstName} placeholder="first name" onChange={onFirstNameChange}/>
+                <input type="text" name="name" id="signUpInputs" value={first_name} placeholder="first name" onChange={onFirstNameChange}/>
                 </label>
                 <br></br>
                 <br></br>
@@ -124,7 +126,7 @@ function SignUp() {
                 <br></br>
                 <p id="signUpLabels">select three interests 💡</p>
                 <label id="signUpLabels">
-                    <select required name={interest1} id="signUpInputs" value={interest1} onChange={handleInterest1}>
+                    <select required name={interest_1} id="signUpInputs" value={interest_1} onChange={handleinterest_1}>
                         <option value="" disabled selected>interest</option>
                         <option name="baking">baking</option>
                         <option>biking</option>
@@ -140,7 +142,7 @@ function SignUp() {
                 </label>
                 <br></br>
                 <label id="signUpLabels">
-                    <select required name="name" id="signUpInputs" value={interest2} onChange={handleInterest2}>
+                    <select required name="name" id="signUpInputs" value={interest_2} onChange={handleinterest_2}>
                         <option value="" disabled selected>interest</option>
                         <option>baking</option>
                         <option>biking</option>
@@ -156,7 +158,7 @@ function SignUp() {
                 </label>
                 <br></br>
                 <label id="signUpLabels">
-                    <select required name="name" id="signUpInputs" value={interest3} onChange={handleInterest3}>
+                    <select required name="name" id="signUpInputs" value={interest_3} onChange={handleinterest_3}>
                         <option value="" disabled selected>interest</option>
                         <option>baking</option>
                         <option>biking</option>
@@ -173,7 +175,7 @@ function SignUp() {
                 <br></br>
                 <br></br>
                 <label id="signUpLabels">
-                <input type="text" name="profilePic" id="signUpInputs" value={profilePic} placeholder="profile photo link" onChange={onProfilePicChange}/>
+                <input type="text" name="profilePic" id="signUpInputs" value={profile_photo_link} placeholder="profile photo link" onChange={onProfilePicChange}/>
                 </label>
                 <br></br>
                 <br></br>
@@ -187,10 +189,12 @@ function SignUp() {
                 </label>
                 <br></br>
                 <br></br>
-                <NavLink to="/login" id="navLinks">
-                    <p id="signUpSubmit" onClick={onSignUpSubmit}>submit</p>
-                {/* <input type="submit" value="submit" id="signUpSubmit" onClick={onSignUpSubmit}></input> */}
+                <div onClick={onSignUpSubmit}>
+                    <NavLink to="/login" id="navLinks">
+                        <p id="signUpSubmit">submit</p>
+                    {/* <input type="submit" value="submit" id="signUpSubmit" onClick={onSignUpSubmit}></input> */}
                 </NavLink>
+                </div>
             </form>
         </div>
     )
@@ -199,7 +203,7 @@ function SignUp() {
 
     return (
         <div>
-            {/* {loggedIn ? null : newUserSignUp } */}
+            {/* {logged_in ? null : newUserSignUp } */}
             {newUserSignUp}
         </div>
     )

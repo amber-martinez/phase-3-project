@@ -24,6 +24,24 @@ class ApplicationController < Sinatra::Base
         user.to_json
     end
 
+    post '/users' do
+        user = User.create(
+            first_name: params[:first_name],
+            gender: params[:gender],
+            age: params[:age],
+            location: params[:location],
+            interest_1: params[:interest_1],
+            interest_2: params[:interest_2],
+            interest_3: params[:interest_3],
+            profile_photo_link: params[:profile_photo_link],
+            email: params[:email],
+            password: params[:password],
+            logged_in: params[:logged_in]
+        )
+
+        user.to_json
+    end
+
     patch '/users/:id' do
         user = User.find(params[:id])
 

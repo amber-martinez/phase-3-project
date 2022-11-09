@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import Profile from "./Profile"
 
@@ -10,6 +10,14 @@ function LogIn() {
     // const [loginInput, setLoginInput] = useState({});
     const [emailInput, setEmailInput] = useState("");
     const [passwordInput, setPasswordInput] = useState("");
+    const [profileData, setProfileData] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:9292/users`)
+        .then(r => r.json())
+        .then(data => setProfileData(data))
+        // .then(data => console.log(data))
+    }, )
 
     function onEmailTyping(e) {
         setEmailInput(e.target.value)
@@ -23,6 +31,8 @@ function LogIn() {
         email: emailInput,
         password: passwordInput
     }
+
+
 
     function onClickSubmit() {
         fetch(`http://localhost:9292/inputs`, {

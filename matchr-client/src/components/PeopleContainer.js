@@ -191,8 +191,8 @@ function PeopleContainer({ people }) {
 
     const signInForPeople = (
         <div>
-            <img id="wrongLoginImg" src="https://media4.giphy.com/media/BHnkkJ67uggC8j3Aek/giphy.gif"></img>
-            <h3>whoa, who are you?</h3>
+            <img id="wrongLoginImg" src="https://media1.giphy.com/media/W0EYIXw4wkbF0SU0wS/giphy.gif"></img>
+            <h3>you're clearly here to meet sexy singles, so..</h3>
             <p>make an account <NavLink to="/signup">here</NavLink>, or try to <NavLink to="/login">log in</NavLink>.</p>
         </div>
     )
