@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
-function ChatBox({ currentChatPerson, chatterPic, loadMessages, greetingLine, chatStart, handleNewMessage, yourProfileData }) {
+function ChatBox({ currentChatPerson, chatterPic, loadMessages, greetingLine, chatStart, handleNewMessage, currentProfile }) {
 
     const [messageTyping, setMessageTyping] = useState('');
 
-    console.log(yourProfileData.id)
     function handleMessageTyping(e) {
         setMessageTyping(e.target.value)
     }
@@ -16,7 +15,7 @@ function ChatBox({ currentChatPerson, chatterPic, loadMessages, greetingLine, ch
         const newMessageData = {
             recipient: currentChatPerson,
             message: messageTyping,
-            user_id: yourProfileData.id
+            user_id: currentProfile.id
         };
 
         console.log(newMessageData)

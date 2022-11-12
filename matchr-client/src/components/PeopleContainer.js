@@ -11,7 +11,6 @@ function PeopleContainer({ people }) {
     const [filteredPeople, setFilteredPeople] = useState([]);
     const [filterState, setFilterState] = useState("All")
     const [peopleGroup, setPeopleGroup] = useState([]);
-    const [yourProfileData, setYourProfileData] = useState([])
 
     let locationFilterX = locationFilterState ? "🔽" : "▶️";
     let interestsFilterX = interestsFilterState ? "🔽" : "▶️";
@@ -22,15 +21,6 @@ function PeopleContainer({ people }) {
             setFilteredPeople(people)
         }
     })
-
-    useEffect(() => {
-        fetch(`http://localhost:9292/users`)
-        .then(r => r.json())
-        .then(data => {
-            const profile = data.filter(person => person.logged_in == true)
-            setYourProfileData(profile[0])
-        })
-    }, [])
 
     function handleLocationFilter(e) {
         e.preventDefault();
@@ -189,17 +179,9 @@ function PeopleContainer({ people }) {
         </span>
     )
 
-    const signInForPeople = (
-        <div>
-            <img id="wrongLoginImg" src="https://media1.giphy.com/media/W0EYIXw4wkbF0SU0wS/giphy.gif"></img>
-            <h3>you're clearly here to meet sexy singles, so..</h3>
-            <p>make an account <NavLink to="/signup">here</NavLink>, or try to <NavLink to="/login">log in</NavLink>.</p>
-        </div>
-    )
-
     return (
         <div>
-            {yourProfileData ? peopleContainer : signInForPeople}
+            {peopleContainer}
         </div>
     )
 }

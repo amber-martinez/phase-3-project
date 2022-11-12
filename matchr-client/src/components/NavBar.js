@@ -1,38 +1,25 @@
 import React, { useState, useEffect } from "react";
-// import Home from "./Home";
-// import Chat from "./Chat";
-// import Profile from "./Profile";
 import { NavLink } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ currentProfile }) {
 
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [searchForLogin, setSearchForLogin] = useState([]);
-    const [load, setLoad] = useState(false);
+    const [personNav, setPersonNav] = useState();
 
     useEffect(() => {
-        
-        fetch(`http://localhost:9292/users`)
-        .then(r => r.json())
-        .then(data => {
-            setSearchForLogin(data.filter(person => {
-                if (person.logged_in == true) {
-                    return person
-                }
-            }));
-        })
-    }, [searchForLogin])
-
-
-    useEffect(() => {
-
-        if (searchForLogin.length > 0) {
-            setLoggedIn(true)
+        if (currentProfile != null) {
+            setPersonNav(
+                <NavLink to="/profile">
+                    <img src="https://i.imgur.com/xgw6bM2.png" id="navIcon"></img>
+                </NavLink>
+            )
         } else {
-            setLoggedIn(false)
+            setPersonNav(
+                <NavLink to="/login">
+                    <img src="https://i.imgur.com/xgw6bM2.png" id="navIcon"></img>
+                </NavLink>
+            )
         }
-
-    }, [searchForLogin])
+    }, [currentProfile])
 
 
     const profilePage = (
@@ -61,7 +48,7 @@ function NavBar() {
                 </NavLink>
             </span>
             <span id="navSpan">
-                {loggedIn ? profilePage : loginPage }
+                {personNav}
             </span>
         </div>
     )

@@ -5,7 +5,8 @@ class ApplicationController < Sinatra::Base
 
     get '/users' do
         users = User.all
-        users.to_json
+        
+        users.to_json(include: :messages)
     end
 
     get '/inputs' do
@@ -15,7 +16,8 @@ class ApplicationController < Sinatra::Base
 
     get '/messages' do
         messages = Message.all
-        messages.to_json
+
+        messages.to_json(include: :user)
     end
 
     get '/users/:id' do
@@ -58,6 +60,15 @@ class ApplicationController < Sinatra::Base
             password: params[:password],
             logged_in: params[:logged_in]
         )
+
+        user.to_json
+    end
+
+    delete '/users/:id' do
+
+        user = User.find(params[:id])
+
+        user.destroy
 
         user.to_json
     end
